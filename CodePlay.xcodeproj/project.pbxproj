@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		610709D12C2B8BB600E9AE9C /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610709D02C2B8BB600E9AE9C /* Version.swift */; };
+		610709D42C2B8C3400E9AE9C /* VisualEffect+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610709D32C2B8C3400E9AE9C /* VisualEffect+View.swift */; };
 		612E94932C2B333900D8FF31 /* CodePlayApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E94922C2B333900D8FF31 /* CodePlayApp.swift */; };
-		612E94952C2B333900D8FF31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E94942C2B333900D8FF31 /* ContentView.swift */; };
+		612E94952C2B333900D8FF31 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 612E94942C2B333900D8FF31 /* MenuScene.swift */; };
 		612E94972C2B333A00D8FF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612E94962C2B333A00D8FF31 /* Assets.xcassets */; };
 		612E949A2C2B333A00D8FF31 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612E94992C2B333A00D8FF31 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		610709D02C2B8BB600E9AE9C /* Version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
+		610709D32C2B8C3400E9AE9C /* VisualEffect+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VisualEffect+View.swift"; sourceTree = "<group>"; };
 		612E948F2C2B333900D8FF31 /* CodePlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodePlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		612E94922C2B333900D8FF31 /* CodePlayApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodePlayApp.swift; sourceTree = "<group>"; };
-		612E94942C2B333900D8FF31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		612E94942C2B333900D8FF31 /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		612E94962C2B333A00D8FF31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		612E94992C2B333A00D8FF31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		612E949B2C2B333A00D8FF31 /* CodePlay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CodePlay.entitlements; sourceTree = "<group>"; };
@@ -33,6 +37,103 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		610709C52C2B802600E9AE9C /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				610709C82C2B804400E9AE9C /* Workspace */,
+				610709C72C2B803700E9AE9C /* ProjectMenu */,
+				610709C62C2B803000E9AE9C /* StartMenu */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		610709C62C2B803000E9AE9C /* StartMenu */ = {
+			isa = PBXGroup;
+			children = (
+				610709CA2C2B804E00E9AE9C /* Models */,
+				610709C92C2B804A00E9AE9C /* Views */,
+			);
+			path = StartMenu;
+			sourceTree = "<group>";
+		};
+		610709C72C2B803700E9AE9C /* ProjectMenu */ = {
+			isa = PBXGroup;
+			children = (
+				610709CC2C2B805500E9AE9C /* Models */,
+				610709CB2C2B805200E9AE9C /* Views */,
+			);
+			path = ProjectMenu;
+			sourceTree = "<group>";
+		};
+		610709C82C2B804400E9AE9C /* Workspace */ = {
+			isa = PBXGroup;
+			children = (
+				610709CE2C2B805D00E9AE9C /* Models */,
+				610709CD2C2B805900E9AE9C /* Views */,
+			);
+			path = Workspace;
+			sourceTree = "<group>";
+		};
+		610709C92C2B804A00E9AE9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				612E94942C2B333900D8FF31 /* MenuScene.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		610709CA2C2B804E00E9AE9C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		610709CB2C2B805200E9AE9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		610709CC2C2B805500E9AE9C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		610709CD2C2B805900E9AE9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		610709CE2C2B805D00E9AE9C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		610709CF2C2B8BA900E9AE9C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				610709D22C2B8C2200E9AE9C /* Views */,
+				610709D02C2B8BB600E9AE9C /* Version.swift */,
+				610709D32C2B8C3400E9AE9C /* VisualEffect+View.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		610709D22C2B8C2200E9AE9C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		612E94862C2B333900D8FF31 = {
 			isa = PBXGroup;
 			children = (
@@ -52,8 +153,9 @@
 		612E94912C2B333900D8FF31 /* CodePlay */ = {
 			isa = PBXGroup;
 			children = (
+				610709CF2C2B8BA900E9AE9C /* Helpers */,
+				610709C52C2B802600E9AE9C /* Features */,
 				612E94922C2B333900D8FF31 /* CodePlayApp.swift */,
-				612E94942C2B333900D8FF31 /* ContentView.swift */,
 				612E94962C2B333A00D8FF31 /* Assets.xcassets */,
 				612E949B2C2B333A00D8FF31 /* CodePlay.entitlements */,
 				612E94982C2B333A00D8FF31 /* Preview Content */,
@@ -139,7 +241,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				612E94952C2B333900D8FF31 /* ContentView.swift in Sources */,
+				612E94952C2B333900D8FF31 /* MenuScene.swift in Sources */,
+				610709D12C2B8BB600E9AE9C /* Version.swift in Sources */,
+				610709D42C2B8C3400E9AE9C /* VisualEffect+View.swift in Sources */,
 				612E94932C2B333900D8FF31 /* CodePlayApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
