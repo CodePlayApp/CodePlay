@@ -14,6 +14,7 @@
 		612E94972C2B333A00D8FF31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612E94962C2B333A00D8FF31 /* Assets.xcassets */; };
 		612E949A2C2B333A00D8FF31 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 612E94992C2B333A00D8FF31 /* Preview Assets.xcassets */; };
 		61417D172C2C427500821191 /* Border+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61417D162C2C427500821191 /* Border+View.swift */; };
+		61417D192C2C5BC000821191 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61417D182C2C5BC000821191 /* MenuButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		612E94992C2B333A00D8FF31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		612E949B2C2B333A00D8FF31 /* CodePlay.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CodePlay.entitlements; sourceTree = "<group>"; };
 		61417D162C2C427500821191 /* Border+View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Border+View.swift"; sourceTree = "<group>"; };
+		61417D182C2C5BC000821191 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		610709D22C2B8C2200E9AE9C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				61417D182C2C5BC000821191 /* MenuButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 			files = (
 				612E94952C2B333900D8FF31 /* MenuScene.swift in Sources */,
 				61417D172C2C427500821191 /* Border+View.swift in Sources */,
+				61417D192C2C5BC000821191 /* MenuButton.swift in Sources */,
 				610709D12C2B8BB600E9AE9C /* Version.swift in Sources */,
 				610709D42C2B8C3400E9AE9C /* VisualEffect+View.swift in Sources */,
 				612E94932C2B333900D8FF31 /* CodePlayApp.swift in Sources */,

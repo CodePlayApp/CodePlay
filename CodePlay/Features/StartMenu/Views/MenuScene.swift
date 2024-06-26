@@ -25,10 +25,32 @@ struct MenuScene: View {
                                     .blur(radius: 20)
                                 Image(nsImage: NSImage(named: "AppIcon")!)
                             }
+                            
                             Text("CodePlay")
                                 .font(.largeTitle)
                                 .fontWeight(.semibold)
                             Text("Version \(VersionBundle.appVersion)")
+                            
+                            Spacer()
+                                .frame(height: 30)
+                            
+                            Button(action: {}, label: {
+                                HStack {
+                                    Image(systemName: "plus.square")
+                                    Text("New Project")
+                                }
+                                .frame(width: 300, alignment: .leading)
+                            })
+                            .buttonStyle(MenuButtonStyle())
+                            
+                            Button(action: {}, label: {
+                                HStack {
+                                    Image(systemName: "folder")
+                                    Text("Open Project")
+                                }
+                                .frame(width: 300, alignment: .leading)
+                            })
+                            .buttonStyle(MenuButtonStyle())
                         }
                         Spacer()
                             .frame(width: ((720 / 4) / 2))
@@ -36,9 +58,16 @@ struct MenuScene: View {
                 }
                 .frame(maxWidth: 720 / 2, maxHeight: .infinity, alignment: .center)
                 VStack {
-                    
+                    HStack {
+                        Spacer()
+                            .frame(width: (720 / 4) / 2)
+                        VStack {
+                            Text("TODO")
+                        }
+                    }
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
-                .frame(maxWidth: 720 / 4, maxHeight: .infinity)
+                .frame(maxWidth: 720 / 4, maxHeight: .infinity, alignment: .center)
                 .border(width: 1.0, edges: [.leading], color: colorScheme == .dark ? .white.opacity(0.3) : Color(nsColor: .systemGray.withAlphaComponent(0.3)))
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -50,6 +79,6 @@ struct MenuScene: View {
     }
 }
 
-#Preview {
-    MenuScene()
-}
+//#Preview {
+//    MenuScene()
+//}
