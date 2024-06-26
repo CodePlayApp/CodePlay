@@ -7,39 +7,39 @@
 
 import SwiftUI
 
-class Window : NSObject, NSWindowDelegate {
+class Window {
     
-    private static var windowRef: NSWindow? = nil
-    public static var nsWindow: NSWindow? {
-        get {
-            return windowRef
+    public var nsWindow: NSWindow
+    private var contentView: NSView // NSHostingView
+    private var closeWhenDestroyed: Bool
+    
+    public var title: String
+    public var styleMasks: NSWindow.StyleMask = [.closable, .titled]
+    
+    public init(title: String = "", closeWhenDone: Bool, view: NSView) {
+        self.nsWindow = NSWindow()
+        self.closeWhenDestroyed = closeWhenDone
+        self.title = title
+        self.contentView = view
+    }
+    
+    deinit {
+        if self.closeWhenDestroyed {
+            self.nsWindow.close()
         }
     }
     
-    public static func createWindow(width: CGFloat, height: CGFloat, styleMasks: NSWindow.StyleMask, parent: NSScreen?, hostView: some View) -> Void {
-        let window = NSWindow(contentRect: NSMakeRect(0, 0, width, height), styleMask: [], backing: .buffered, defer: false, screen: parent)
+    public func makeWindow(shouldCenter: Bool, hideTitleBar: Bool) {
+        nsWindow.styleMask = self.styleMasks
+        nsWindow.title = self.title
+        nsWindow.contentView = self.contentView
         
-        window.contentViewController = NSHostingController(rootView: hostView)
-        window.styleMask = styleMasks
-        window.hasShadow = true
-        window.center()
-        window.makeKeyAndOrderFront(nil)
+        if shouldCenter {
+            nsWindow.center()
+        }
         
-        Self.windowRef = window
-    }
-    
-    public static func closeWindow() -> Void {
-        if let window = Self.windowRef {
-            window.close()
-            Self.windowRef = nil
+        if hideTitleBar {
+            nsWindow.titlebarAppearsTransparent = true
         }
-    }
-    
-    func windowShouldClose(_ sender: NSWindow) -> Bool {
-        if sender == Self.windowRef {
-            Self.closeWindow()
-            return true
-        }
-        return false
     }
 }

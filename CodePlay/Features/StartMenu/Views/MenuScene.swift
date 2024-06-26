@@ -13,6 +13,9 @@ import SwiftUI
 struct MenuScene: View {
     
     @Environment(\.colorScheme) var colorScheme: ColorScheme
+    @State private var viewWindow: NSWindow? = nil
+    @State private var showNewProject: Bool = false
+    @State private var openProject: Bool = false
 
     var body: some View {
         ZStack {
@@ -34,7 +37,7 @@ struct MenuScene: View {
                             Spacer()
                                 .frame(height: 30)
                             
-                            Button(action: {}, label: {
+                            Button(action: { self.showNewProject.toggle() }, label: {
                                 HStack {
                                     Image(systemName: "plus.square")
                                     Text("New Project")
@@ -43,7 +46,7 @@ struct MenuScene: View {
                             })
                             .buttonStyle(MenuButtonStyle())
                             
-                            Button(action: {}, label: {
+                            Button(action: { self.openProject.toggle() }, label: {
                                 HStack {
                                     Image(systemName: "folder")
                                     Text("Open Project")
@@ -76,6 +79,19 @@ struct MenuScene: View {
         .ignoresSafeArea()
         .frame(width: 720, height: 430)
         .fixedSize()
+        .background(WindowAccessor(currentWindow: self.$viewWindow))
+        .sheet(isPresented: self.$showNewProject) {
+            VStack {
+                
+            }
+            .frame(width: 720 / 2, height: 720 / 2)
+        }
+        .fileImporter(isPresented: self.$openProject, allowedContentTypes: [.folder]) { result in
+            if let url = try? result.get() {
+                CodePlayApp.appDelegate.showBlankEditorView(fileUrl: url.absoluteString)
+                self.viewWindow!.close()
+            }
+        }
     }
 }
 

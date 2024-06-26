@@ -30,19 +30,3 @@ struct MenuButtonStyle: ButtonStyle {
             })
     }
 }
-
-struct MenuButton: View {
-    var body: some View {
-        ZStack {
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
-                Text("Button")
-            })
-            .buttonStyle(MenuButtonStyle())
-        }
-        .padding()
-    }
-}
-
-#Preview {
-    MenuButton()
-}
