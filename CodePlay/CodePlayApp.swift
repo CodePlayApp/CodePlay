@@ -37,5 +37,16 @@ struct CodePlayApp: App {
         }
         .windowResizability(.contentSize)
         .windowStyle(HiddenTitleBarWindowStyle())
+        .commands(content: {
+            CommandGroup(replacing: .appInfo, addition: {
+                Button(action: {
+                    let appInfoView = AppInfo()
+                    Window.createWindow(width: 300, height: 300, styleMasks: [.titled, .closable, .fullSizeContentView], parent: NSApp.windows.first?.screen, hostView: appInfoView)
+                    Window.nsWindow?.titlebarAppearsTransparent = true
+                }, label: {
+                    Text("About CodePlay")
+                })
+            })
+        })
     }
 }
