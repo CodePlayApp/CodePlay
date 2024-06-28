@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class Window {
+class WindowManager {
     
     public var nsWindow: NSWindow
     private var contentView: NSView // NSHostingView

@@ -41,7 +41,8 @@ struct VisualEffectBackground: NSViewRepresentable {
     private let blendingMode: NSVisualEffectView.BlendingMode
     private let isEmphasized: Bool
 
-    fileprivate init(
+    // old: fileprivate
+    public init(
         material: NSVisualEffectView.Material,
         blendingMode: NSVisualEffectView.BlendingMode,
         emphasized: Bool) {

@@ -9,10 +9,21 @@ import SwiftUI
 
 struct BlankEditorView: View {
     
-    @State public var projectFileUrl: String?
+    @State private var indexingProject: Bool = true
+    
+    @EnvironmentObject var openProjectUrl: MenuModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            if self.indexingProject {
+//                ProgressView()
+//                    .progressViewStyle(.circular)
+                Text(openProjectUrl.projectUrl?.absoluteString ?? "None")
+            } else {
+                
+            }
+        }
+        .frame(minWidth: 900, minHeight: 500)
     }
 }
 

@@ -8,22 +8,42 @@
 import SwiftUI
 
 struct AppInfo: View {
+    
     var body: some View {
-        VStack {
-            Spacer()
+        HStack {
             Image(nsImage: NSImage(named: "AppIcon")!)
-            Text("About CodePlay")
-                .font(.largeTitle)
-            Text("Version \(VersionBundle.appVersion)")
-                .font(.subheadline)
-                .padding([.bottom])
-            Text("Developed by Mustafa Malik")
-                .font(.callout)
             Spacer()
-            .padding()
+                .frame(width: 30)
+            VStack {
+                Spacer()
+                Text("CodePlay")
+                    .font(.title)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Version \(VersionBundle.appVersion)")
+                    .font(.subheadline)
+                    .padding([.bottom])
+                    .foregroundStyle(.gray)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("Copyright (c) 2024 CodePlay and Authors. See GNU\nGPLv3 license for more information. To Contact for more information, please reach out via 140mustafa@gmail.com.")
+                    .font(.callout)
+                    .foregroundStyle(.gray)
+                Spacer()
+                    .frame(height: 60)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            Spacer()
         }
-        .frame(width: 300, height: 300)
+        .frame(width: 500, height: 180)
         .fixedSize()
         .presentedWindowStyle(.hiddenTitleBar)
+        .onAppear {
+            Task {
+                if let window = NSApp.findWindow(.AppInfoWindow) {
+                    window.standardWindowButton(.miniaturizeButton)?.isHidden = true
+                    window.standardWindowButton(.zoomButton)?.isHidden = true
+                }
+            }
+        }
     }
 }
