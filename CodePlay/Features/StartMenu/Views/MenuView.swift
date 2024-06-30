@@ -24,6 +24,26 @@ struct MenuView: View {
     @State private var showNewProject: Bool = false
     @State private var openProject: Bool = false
     
+    @State private var projectOptions: [String] = [
+        "Empty Project",
+        "GUI Builder Project",
+        "C/C++ Project",
+        "Swift Project",
+        "Java Project"
+    ]
+    @State private var selectedProject: String = ""
+    
+    @State private var projectName: String = ""
+    @State private var packageName: String = ""
+    
+    @State private var browseFileUrl: String = "No Location"
+    @State private var shouldBrowseFile: Bool = false
+    
+    init() {
+        _selectedProject = State(initialValue: projectOptions.first ?? "Empty Project")
+    }
+    
+    // TODO: Make it actually do shit
     var body: some View {
         HStack(spacing: 0) {
             // Left Panel
@@ -78,10 +98,72 @@ struct MenuView: View {
         .fixedSize()
         .presentedWindowStyle(.hiddenTitleBar)
         .sheet(isPresented: self.$showNewProject) {
-            VStack {
-                
+            VStack(spacing: 0) {
+                Form {
+                    Group {
+                        Section("Choose options for your new project:") {
+                            HStack {
+                                Text("Project Name: ")
+                                    .frame(width: 120, alignment: .leading)
+                                TextField(text: self.$projectName, label: { EmptyView() })
+                                    .multilineTextAlignment(.leading)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .frame(maxWidth: .infinity)
+                                    .focusEffectDisabled()
+                            }
+                            HStack {
+                                Text("Project Package: ")
+                                    .frame(width: 120, alignment: .leading)
+                                TextField(text: self.$packageName, label: { EmptyView() })
+                                    .multilineTextAlignment(.leading)
+                                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                                    .frame(maxWidth: .infinity)
+                                    .focusEffectDisabled()
+    //                                .overlay(
+    //                                    RoundedRectangle(cornerRadius: 5.0)
+    //                                        .stroke(.gray.opacity(0.4), lineWidth: 0.4)
+    //                                )
+                            }
+                        }
+                        Section("Select configurations for your project:") {
+                            HStack {
+                                Text(self.browseFileUrl)
+                                Spacer()
+                                Button(action: { self.shouldBrowseFile.toggle() }, label: {
+                                    Text("Browse")
+                                })
+                            }
+                            HStack {
+                                Text("Select Project Type")
+                                Spacer()
+                                Picker("", selection: self.$selectedProject) {
+                                    ForEach(self.projectOptions, id: \.self) { projectName in
+                                        Text(projectName)
+                                            .tag(projectName)
+                                    }
+                                }
+                            }
+                        }
+                        .fileImporter(isPresented: self.$shouldBrowseFile, allowedContentTypes: [.folder]) { result in
+                            print(self.selectedProject)
+                            if let url = try? result.get() {
+                                self.browseFileUrl = url.absoluteString
+                            }
+                        }
+                    }
+                }
+                .formStyle(.grouped)
+                .frame(width: width - 50, height: height - 50)
+                HStack {
+                    Spacer()
+                    Button(action: { self.showNewProject = false }, label: { Text("Cancel") })
+                    Button(action: { }, label: {
+                        Text("Create")
+                    })
+                    .keyboardShortcut(.defaultAction)
+                }
+                .padding()
             }
-            .frame(width: 300, height: 300)
         }
         .fileImporter(isPresented: self.$openProject, allowedContentTypes: [.folder]) { result in
             if let url = try? result.get() {

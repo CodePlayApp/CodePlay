@@ -9,7 +9,13 @@ import SwiftUI
 
 class CodePlayDelegator : NSObject, NSApplicationDelegate {
     
+    func applicationWillUpdate(_ notification: Notification) {
+
+    }
+    
     func applicationDidFinishLaunching(_ notification: Notification) -> Void {
+        UserDefaults.standard.register(defaults: ["NSQuitAlwaysKeepsWindows" : false])
+        
         if let window = NSApp.windows.first {
             window.standardWindowButton(.zoomButton)?.isHidden = true
             window.standardWindowButton(.miniaturizeButton)?.isHidden = true
@@ -17,6 +23,27 @@ class CodePlayDelegator : NSObject, NSApplicationDelegate {
             window.setContentSize(NSSize(width: 720, height: 430))
             window.center()
             window.setFrameOrigin(NSPoint(x: window.frame.origin.x, y: window.frame.origin.y - 50))
+        }
+        
+        DispatchQueue.main.async {
+            if let menu = NSApplication.shared.mainMenu {
+                guard let fileItem = menu.item(withTitle: "File") else {
+                    return
+                }
+                guard let editItem = menu.item(withTitle: "Edit") else {
+                    return
+                }
+                guard let windowItem = menu.item(withTitle: "Window") else {
+                    return
+                }
+                guard let viewItem = menu.item(withTitle: "View") else {
+                    return
+                }
+                menu.removeItem(fileItem)
+                menu.removeItem(editItem)
+                menu.removeItem(windowItem)
+                menu.removeItem(viewItem)
+            }
         }
     }
     
